@@ -19,14 +19,31 @@ function writePassword() {
         writePassword();
   }
 
-  // Second prompt - lowercase letters
-    confirm("Would you like your password to contain lowercase letters?");
-      valueToUse = lowerCase[Math.floor(Math.random() * lowerCase.length)];
-      
-  }
-  
+
+  // First confirm - lowercase letters
+    var confirm1 = confirm("Would you like your password to contain lowercase letters?");
+      if (confirm1 === true) 
+        
     
-    // confirm("Would you like your password to contain uppercase letters?");
+    // Second confirm - uppercase letters
+    var confirm2 = confirm("Would you like your password to contain uppercase letters?");
+      if (confirm2 === true) 
+       
+    // Third confirm - numbers
+    var confirm3 = confirm("Would you like your password to contain numbers?");
+    if (confirm3 === true) 
+     
+
+    // Fourth confirm - Special characters
+    var confirm4 = confirm("Would you like your password to contain special characters?");
+    if (confirm4 === true) {
+     
+
+
+  }
+
+    
+    
     // confirm("Would you like your password to contain numbers?");
     // confirm("Would you like your password to contain special characters?");
 
