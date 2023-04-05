@@ -1,15 +1,14 @@
-// Assignment Code
+// // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-var spChar = ["!", "#", "%", "&", "(", ")", "*", "+", ",", "-", ".", "/", ";", ":", ">", "<", "=", "?", "@", "[", "]", "^", "_", "{", "}", "~"];
 
-// Write password to the #password input
+
+
+
+// // Write password to the #password input
 function writePassword() {
 
   // First prompt - Length of Password
-   var passwordLength = prompt("How long would you like your password to be? (select between 8-128 characters)");
+   var passwordLength = prompt("How long would you like your password to be?", "(select between 8-128 characters)");
     if (passwordLength < 8) {
         alert("Not enough characters: Please enter a number between 8 and 128.");
         writePassword();
@@ -17,41 +16,92 @@ function writePassword() {
     } else if (passwordLength > 128) {
         alert("Too many characters: Please enter a number between 8 and 128.");
         writePassword();
-  }
+    }
 
 
-  // First confirm - lowercase letters
-    var confirm1 = confirm("Would you like your password to contain lowercase letters?");
-      if (confirm1 === true) 
+  // First condition - lowercase letters
+    var lowerCase = confirm("Would you like your password to contain lowercase letters?");
+      
         
     
-    // Second confirm - uppercase letters
-    var confirm2 = confirm("Would you like your password to contain uppercase letters?");
-      if (confirm2 === true) 
+    // Second condition - uppercase letters
+    var upperCase = confirm("Would you like your password to contain uppercase letters?");
+    
        
-    // Third confirm - numbers
-    var confirm3 = confirm("Would you like your password to contain numbers?");
-    if (confirm3 === true) 
+    // Third condition - numbers
+    var numbers = confirm("Would you like your password to contain numbers?");
+    
      
 
-    // Fourth confirm - Special characters
-    var confirm4 = confirm("Would you like your password to contain special characters?");
-    if (confirm4 === true) {
+    // Fourth condition - Special characters
+    var spChar = confirm("Would you like your password to contain special characters?");
+
+
      
 
+    var characters = [];
+        
+  
 
-  }
+    var conditions = new Array ();
+    conditions[0] = new Array (lowerCase, ['abcdefghijklmnopqrstuvwxyz']);
+    conditions[1] = new Array (upperCase, ['ABCDEFGHIJKLMNOPQRSTUVWXYZ']);
+    conditions[2] = new Array (numbers, ["0123456789"]);
+    conditions[3] = new Array (spChar, ["~`!@#$%^&*_-+={[}]|:;"]);
 
+    for (var i = 0; i < conditions.length; i++)
+  
+      if (conditions[i][0] === true) {
+
+       
+        characters.push(conditions[i][1] + []);
+        
+      }
+      
+
+        
+ var newCharacters = (characters.join(''));
+ 
+    function generatePassword(length) {
+          let result = " ";
+          const charactersLength = newCharacters.length;
+          for ( let i = 0; i < length; i++ ) {
+            result += newCharacters.charAt(Math.floor(Math.random() * charactersLength));
+          }
+          
+          alert("This is your new password " + result );
+         return result;{
     
     
-    // confirm("Would you like your password to contain numbers?");
-    // confirm("Would you like your password to contain special characters?");
+    
+        }}
+          
+        generatePassword(passwordLength);
+
+
+// }
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
 
   // var password = generatePassword();
   // var passwordText = document.querySelector("#password");
 
   // passwordText.value = password;
   
-
+    
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+    generateBtn.addEventListener("click", writePassword); 
