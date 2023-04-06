@@ -8,7 +8,10 @@ function writePassword() {
   // Part 1 - preferences selected by user
     //Input validations
    var passwordLength = prompt("How long would you like your password to be?", "(select between 8-128 characters)"); {
-    if (passwordLength < 8) {
+   if (passwordLength === null) {
+    return;
+
+   } else if (passwordLength < 8) {
         alert("Not enough characters: Please enter a number between 8 and 128."); 
         writePassword();
         return;
@@ -27,8 +30,13 @@ function writePassword() {
         alert("That's not a number. \nPlease try again.");
         writePassword();
         return;
-    }}
+    }
+    runConfirms();
+  }
   
+
+
+function runConfirms() {
 var lowerCase = confirm("Would you like your password to contain lowercase letters?");
       
   
@@ -40,10 +48,10 @@ var numbers = confirm("Would you like your password to contain numbers?");
     
 var spChar = confirm("Would you like your password to contain special characters?");
 
-
      
 // Part 2 - Selected arrays will be joined together
 var characters = [];
+
       
 var conditions = new Array ();
 conditions[0] = new Array (lowerCase, ['abcdefghijklmnopqrstuvwxyz']);
@@ -53,11 +61,16 @@ conditions[3] = new Array (spChar, ["~`!@#$%^&*_-+={[}]|:;"]);
 
 
   for (var i = 0; i < conditions.length; i++)
-  
-     if (conditions[i][0] === true) {
+
+  if (conditions[i][0] === true) {
        characters.push(conditions[i][1] + []);
+     } else if (characters.length === 0) {
+      alert("Please select 'ok' for at least one parameter.");
+      runConfirms();
+      return;
      }
-      
+    
+
 
 //Part 3 - New array is randomly selected from to create password
 var newCharacters = (characters.join(''));
@@ -74,7 +87,7 @@ function passwordGen(length) {
   }
 
   passwordGen(passwordLength);
-}
+}}
     
   
 // Add event listener to generate button
