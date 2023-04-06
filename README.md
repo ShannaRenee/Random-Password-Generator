@@ -1,4 +1,1 @@
 # Random-Password-Generator
-
-## Description
-
